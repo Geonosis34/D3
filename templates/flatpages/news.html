@@ -1,0 +1,43 @@
+<!--  наследуемся от шаблона default.html, который мы создавали ещё во времена flatpages -->
+{% extends 'flatpages/default.html' %}
+
+
+{% block title %}
+News
+{% endblock title %}
+
+{% block content %}
+    <h1>Все статьи</h1>
+    <h3>{{ time_now|date:'d M Y' }}</h3>
+    <hr>
+    {% if news %} <!-- Если есть товары, то выводим таблицу с ними -->
+        <table>
+            <tr>
+                <td>
+                    Название
+                </td>
+                <td>
+                    Описание
+                </td>
+                <td>
+                    Автор
+                </td>
+            </tr>
+        {% for news in news %}
+            <tr>
+                <td>
+                    {{ news.name }}
+                </td>
+                <td>
+                    {{ news.description|truncatechars:20 }} <!-- дописываем специальный фильтр, чтобы ограничить количество символов до 20. Все остальные символы превратятся в многоточие. -->
+                </td>
+                <td>
+                    {{ news.author }}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <h2>Статей нет!</h2>
+    {% endif %}
+{% endblock content %}
