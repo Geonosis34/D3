@@ -1,16 +1,15 @@
-<!--  наследуемся от шаблона default.html, который мы создавали ещё во времена flatpages -->
+
 {% extends 'flatpages/default.html' %}
 
-{% load custom_filters %}
+{% load newsapp_filters %}
 
 {% block title %}
 News
 {% endblock title %}
 
 {% block content %}
-    <h1>Все статьи</h1>
-    <h3>{{ time_now|date:'d M Y' }}</h3>
-    <hr>
+    <h2><u>Свежие новости</u></h2>
+<h3>{{ time_now|date:'d M Y' }}</h3>
     {% if news %}
         <table>
             <tr>
@@ -22,6 +21,9 @@ News
                 </td>
                 <td>
                     Автор
+                </td>
+                <td>
+                    Дата публикации
                 </td>
             </tr>
         {% for news in news %}
@@ -35,10 +37,14 @@ News
                 <td>
                     {{ news.author }}
                 </td>
+                <td>
+                    {{ news.dateCreation }}
+                </td>
             </tr>
         {% endfor %}
         </table>
     {% else %}
-        <h2>Статей нет!</h2>
+        <h3>Новостей нет!</h3>
     {% endif %}
+
 {% endblock content %}
