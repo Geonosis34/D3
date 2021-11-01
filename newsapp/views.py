@@ -20,6 +20,6 @@ class NewsViews(ListView):
 
 class Post(DetailView):
     model = NewsModel
-    template_name = 'post.html'
+    template_name = 'flatpages\post.html'
     context_object_name = 'post'
 

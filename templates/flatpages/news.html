@@ -8,6 +8,7 @@ News
 {% endblock title %}
 
 {% block content %}
+<h1>{{ post }}</h1>
     <h2><u>Свежие новости</u></h2>
 <h3>{{ time_now|date:'d M Y' }}</h3>
     {% if news %}
@@ -25,6 +26,9 @@ News
                 <td>
                     Дата публикации
                 </td>
+                <td>
+                    ID
+                </td>
             </tr>
         {% for news in news %}
             <tr>
@@ -39,6 +43,9 @@ News
                 </td>
                 <td>
                     {{ news.dateCreation }}
+                </td>
+                <td>
+                    {{ news.id }}
                 </td>
             </tr>
         {% endfor %}

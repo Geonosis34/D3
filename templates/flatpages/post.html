@@ -6,8 +6,11 @@
 Post
 {% endblock title %}
 
+
 {% block content %}
-<p><h3>{{ post.title|censor }}</h3></p>
-<p><u>{{ post.created|date:'d-m-Y H:i' }}</u></p>
-<p>{{ post.text|censor }}</p>
+<h2><u>Абракадабра</u></h2>
+<p><h3>{{ post.name|censor }}</h3></p>
+<p><u>{{ post.dateCreation|date:'d-m-Y H:i' }}</u></p>
+<p>{{ post.description|censor }}</p>
+<p>{{ post.author|censor }}</p>
 {% endblock content %}
