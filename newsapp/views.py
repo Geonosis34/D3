@@ -8,6 +8,7 @@ class NewsViews(ListView):
     model = NewsModel
     template_name = 'flatpages/news.html'
     context_object_name = 'news'
+    queryset = NewsModel.objects.order_by('-dateCreation')
 
 
     def get_context_data(self, **kwargs):
@@ -17,8 +18,8 @@ class NewsViews(ListView):
             'value1'] = None
         return context
 
-
-class NewsDetails(DetailView):
+class Post(DetailView):
     model = NewsModel
-    template_name = 'flatpages/news.html'
-    context_object_name = 'news'
+    template_name = 'post.html'
+    context_object_name = 'post'
+

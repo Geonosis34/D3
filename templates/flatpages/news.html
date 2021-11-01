@@ -1,6 +1,7 @@
 <!--  наследуемся от шаблона default.html, который мы создавали ещё во времена flatpages -->
 {% extends 'flatpages/default.html' %}
 
+{% load custom_filters %}
 
 {% block title %}
 News
@@ -10,7 +11,7 @@ News
     <h1>Все статьи</h1>
     <h3>{{ time_now|date:'d M Y' }}</h3>
     <hr>
-    {% if news %} <!-- Если есть товары, то выводим таблицу с ними -->
+    {% if news %}
         <table>
             <tr>
                 <td>
@@ -26,10 +27,10 @@ News
         {% for news in news %}
             <tr>
                 <td>
-                    {{ news.name }}
+                    {{ news.name|censor }}
                 </td>
                 <td>
-                    {{ news.description|truncatechars:20 }} <!-- дописываем специальный фильтр, чтобы ограничить количество символов до 20. Все остальные символы превратятся в многоточие. -->
+                    {{ news.description|truncatechars:20|censor }}
                 </td>
                 <td>
                     {{ news.author }}
